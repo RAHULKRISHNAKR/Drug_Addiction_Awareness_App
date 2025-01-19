@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: #1a1a1a;
+            color: white;
+        }
+
+        .container {
+            max-width: 430px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-bottom: 80px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .menu-icon {
+            color: white;
+            font-size: 24px;
+        }
+
+        .profile-pic {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #ddd;
+        }
+
+        .notification {
+            position: relative;
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #ff6b6b;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        .greeting {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .mood-question {
+            color: #888;
+            margin-bottom: 20px;
+        }
+
+        .mood-options {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            gap: 15px;
+        }
+
+        .mood-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .mood-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .mood-label {
+            color: #888;
+            font-size: 12px;
+        }
+
+        .happy { background-color: #FF69B4; }
+        .calm { background-color: #7B68EE; }
+        .fear { background-color: #40E0D0; }
+        .angry { background-color: #FFA500; }
+
+        .sessions-card {
+            background: #e6f3ff;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sessions-text {
+            flex-grow: 1;
+        }
+
+        .sessions-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .sessions-subtitle {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .icon-container {
+            background: #FFA500;
+            padding: 10px;
+            border-radius: 10px;
+            color: white;
+        }
+
+        .feature-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .feature-button {
+            flex: 1;
+            background: #333;
+            padding: 15px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .quote-box {
+            background: #333;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .quote-text {
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .quote-author {
+            color: #888;
+            font-size: 14px;
+        }
+
+        .progress-card {
+            background: #4CAF50;
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #222;
+            display: flex;
+            justify-content: space-around;
+            padding: 15px;
+            border-top: 1px solid #333;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #888;
+            text-decoration: none;
+            font-size: 12px;
+            gap: 5px;
+        }
+
+        .nav-item.active {
+            color: white;
+        }
+
+        .nav-item i {
+            font-size: 20px;
+            margin-bottom: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-left">
+                <i class="fas fa-bars menu-icon"></i>
+                <div class="profile-pic"></div>
+            </div>
+            <div class="notification">
+                <i class="fas fa-bell" style="color: white;"></i>
+                <span class="notification-badge">3</span>
+            </div>
+        </div>
+
+        <div class="greeting">Good Afternoon, Lucy!!</div>
+        <div class="mood-question">How are you feeling today?</div>
+
+        <div class="mood-options">
+            <div class="mood-option">
+                <div class="mood-icon happy">
+                    <i class="fas fa-smile"></i>
+                </div>
+                <span class="mood-label">Happy</span>
+            </div>
+            <div class="mood-option">
+                <div class="mood-icon calm">
+                    <i class="fas fa-water"></i>
+                </div>
+                <span class="mood-label">Calm</span>
+            </div>
+            <div class="mood-option">
+                <div class="mood-icon fear">
+                    <i class="fas fa-meh"></i>
+                </div>
+                <span class="mood-label">Fear</span>
+            </div>
+            <div class="mood-option">
+                <div class="mood-icon angry">
+                    <i class="fas fa-angry"></i>
+                </div>
+                <span class="mood-label">Angry</span>
+            </div>
+        </div>
+
+        <div class="sessions-card">
+            <div class="sessions-text">
+                <div class="sessions-title">1 on 1 Sessions</div>
+                <div class="sessions-subtitle">Let's open up to the things that matter the most</div>
+            </div>
+            <div class="icon-container">
+                <i class="fas fa-users"></i>
+            </div>
+        </div>
+
+        <div class="feature-buttons">
+            <a href="#" class="feature-button">
+                <i class="fas fa-book"></i>
+                <span>Journal</span>
+            </a>
+            <a href="#" class="feature-button">
+                <i class="fas fa-users"></i>
+                <span>Community</span>
+            </a>
+        </div>
+
+        <div class="quote-box">
+            <div class="quote-text">"It's never too late to be what you might have been."</div>
+            <div class="quote-author">- George Eliot</div>
+        </div>
+
+        <div class="progress-card">
+            You've been clean for
+        </div>
+    </div>
+
+    <nav class="bottom-nav">
+        <a href="home.html" class="nav-item active">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="community1.html" class="nav-item">
+            <i class="fas fa-users"></i>
+            <span>Community</span>
+        </a>
+        <a href="awareness.html" class="nav-item">
+            <i class="fas fa-ribbon"></i>
+            <span>Awareness</span>
+        </a>
+        <a href="support.html" class="nav-item">
+            <i class="fas fa-headset"></i>
+            <span>Support</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="far fa-calendar-check"></i>
+            <span>Appointment</span>
+        </a>
+    </nav>
+</body>
+</html>
