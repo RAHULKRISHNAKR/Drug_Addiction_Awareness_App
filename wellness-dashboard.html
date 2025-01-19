@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wellness Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #1a1a1a;
+            color: white;
+            min-height: 100vh;
+        }
+
+        .header {
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .menu-icon {
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .profile-image {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: #404040;
+        }
+
+        .notification-badge {
+            position: relative;
+        }
+
+        .notification-icon {
+            font-size: 1.5rem;
+        }
+
+        .badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #ff6b6b;
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .streak-card {
+            background-color: #4CAF50;
+            margin: 1rem;
+            padding: 1.5rem;
+            border-radius: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .streak-info {
+            color: white;
+        }
+
+        .streak-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .streak-days {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .streak-icon {
+            font-size: 2rem;
+        }
+
+        .calendar {
+            background-color: #2a2a2a;
+            margin: 1rem;
+            padding: 1rem;
+            border-radius: 15px;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .calendar-day.checked {
+            background-color: #007AFF;
+        }
+
+        .calendar-day.marked::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            width: 4px;
+            height: 4px;
+            background-color: #ff6b6b;
+            border-radius: 50%;
+        }
+
+        .metrics {
+            display: flex;
+            justify-content: space-between;
+            margin: 1rem;
+            gap: 1rem;
+        }
+
+        .metric-card {
+            flex: 1;
+            background-color: #2a2a2a;
+            padding: 1rem;
+            border-radius: 15px;
+            text-align: center;
+            position: relative;
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .charts {
+            margin: 1rem;
+            background-color: #2a2a2a;
+            padding: 1rem;
+            border-radius: 15px;
+        }
+
+        .line-chart {
+            width: 100%;
+            height: 100px;
+            margin-top: 1rem;
+        }
+
+        .nav-bar {
+            background-color: #2a2a2a;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #888;
+            text-decoration: none;
+            font-size: 0.8rem;
+            gap: 0.3rem;
+        }
+
+        .nav-item.active {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <div class="menu-icon">☰</div>
+            <div class="profile-image"></div>
+        </div>
+        <div class="notification-badge">
+            <span class="notification-icon">🔔</span>
+            <span class="badge">3</span>
+        </div>
+    </header>
+
+    <div class="streak-card">
+        <div class="streak-info">
+            <div class="streak-title">You've been clean for</div>
+            <div class="streak-days">131 Days</div>
+        </div>
+        <div class="streak-icon">🌸</div>
+    </div>
+
+    <div class="calendar">
+        <div class="calendar-grid">
+            <div class="calendar-day checked">8</div>
+            <div class="calendar-day checked">9</div>
+            <div class="calendar-day checked">10</div>
+            <div class="calendar-day checked">11</div>
+            <div class="calendar-day checked marked">12</div>
+            <div class="calendar-day checked">13</div>
+            <div class="calendar-day checked">14</div>
+            <div class="calendar-day">15</div>
+            <div class="calendar-day">16</div>
+            <div class="calendar-day">17</div>
+            <div class="calendar-day">18</div>
+            <div class="calendar-day">19</div>
+            <div class="calendar-day">20</div>
+            <div class="calendar-day">21</div>
+            <div class="calendar-day">22</div>
+            <div class="calendar-day">23</div>
+            <div class="calendar-day">24</div>
+            <div class="calendar-day">25</div>
+            <div class="calendar-day marked">26</div>
+            <div class="calendar-day marked">27</div>
+            <div class="calendar-day marked">28</div>
+        </div>
+    </div>
+
+    <div class="metrics">
+        <div class="metric-card" style="color: #ff6b6b">
+            <div class="metric-value">75%</div>
+            <div class="metric-label">80↑</div>
+        </div>
+        <div class="metric-card" style="color: #4CAF50">
+            <div class="metric-value">50%</div>
+            <div class="metric-label">45↓</div>
+        </div>
+        <div class="metric-card" style="color: #9C27B0">
+            <div class="metric-value">80%</div>
+            <div class="metric-label">60↑</div>
+        </div>
+    </div>
+
+    <div class="charts">
+        <svg class="line-chart" viewBox="0 0 300 100">
+            <path d="M0 80 C50 70, 100 85, 150 75 S250 60, 300 65" fill="none" stroke="#ff6b6b" stroke-width="2"/>
+            <path d="M0 50 C50 45, 100 55, 150 50 S250 40, 300 45" fill="none" stroke="#4CAF50" stroke-width="2"/>
+            <path d="M0 30 C50 25, 100 35, 150 30 S250 20, 300 25" fill="none" stroke="#9C27B0" stroke-width="2"/>
+        </svg>
+    </div>
+
+    <nav class="nav-bar">
+        <a href="#" class="nav-item active">
+            <span class="nav-icon">🏠</span>
+            Home
+        </a>
+        <a href="#" class="nav-item">
+            <span class="nav-icon">👥</span>
+            Community
+        </a>
+        <a href="#" class="nav-item">
+            <span class="nav-icon">💡</span>
+            Awareness
+        </a>
+        <a href="#" class="nav-item">
+            <span class="nav-icon">💪</span>
+            Support
+        </a>
+        <a href="#" class="nav-item">
+            <span class="nav-icon">📅</span>
+            Appointment
+        </a>
+    </nav>
+
+    <script>
+        // Handle navigation item clicks
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.nav-item').forEach(navItem => {
+                    navItem.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+
+        // Handle streak card click
+        document.querySelector('.streak-card').addEventListener('click', () => {
+            alert('View streak details');
+        });
+
+        // Handle calendar day clicks
+        document.querySelectorAll('.calendar-day').forEach(day => {
+            day.addEventListener('click', function() {
+                alert(`Selected day: ${this.textContent}`);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Chat</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #1a1a1a;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #2a2a2a;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .menu-icon {
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .profile-image {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: #404040;
+        }
+
+        .title {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        .notification-icon {
+            font-size: 1.5rem;
+            position: relative;
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #ff6b6b;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .channels {
+            display: flex;
+            gap: 0.5rem;
+            padding: 1rem;
+            overflow-x: auto;
+            background-color: #2a2a2a;
+        }
+
+        .channel-pill {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            background-color: #404040;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+
+        .channel-pill.active {
+            background-color: #ff6b6b;
+        }
+
+        .chat-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        .message {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .message-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #404040;
+            flex-shrink: 0;
+        }
+
+        .message-content {
+            background-color: #2a2a2a;
+            padding: 1rem;
+            border-radius: 15px;
+            max-width: 80%;
+        }
+
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .message-name {
+            font-weight: 500;
+        }
+
+        .message-time {
+            color: #888;
+            font-size: 0.8rem;
+        }
+
+        .message-text {
+            color: #ddd;
+            line-height: 1.4;
+        }
+
+        .input-container {
+            padding: 1rem;
+            background-color: #2a2a2a;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 60px;
+        }
+
+        .message-input {
+            flex: 1;
+            padding: 0.8rem;
+            border-radius: 20px;
+            border: none;
+            background-color: #404040;
+            color: white;
+        }
+
+        .send-button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .nav-bar {
+            background-color: #2a2a2a;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #888;
+            text-decoration: none;
+            font-size: 0.8rem;
+            gap: 0.3rem;
+        }
+
+        .nav-item.active {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <div class="menu-icon">☰</div>
+            <div class="profile-image"></div>
+            <div class="title">Wellness Hub</div>
+        </div>
+        <div class="notification-icon">
+            🔔
+            <div class="notification-badge">3</div>
+        </div>
+    </header>
+
+    <div class="channels">
+        <div class="channel-pill active">Channel 1</div>
+        <div class="channel-pill">Channel 2</div>
+        <div class="channel-pill">Channel 3</div>
+    </div>
+
+    <div class="chat-container">
+        <div class="message">
+            <div class="message-avatar"></div>
+            <div class="message-content">
+                <div class="message-header">
+                    <span class="message-name">Dr. Maya Patel</span>
+                    <span class="message-time">2:30 PM</span>
+                </div>
+                <div class="message-text">Good morning Lucy. How are you feeling today?</div>
+            </div>
+        </div>
+
+        <div class="message">
+            <div class="message-avatar"></div>
+            <div class="message-content">
+                <div class="message-header">
+                    <span class="message-name">Dr. Peter Reynolds</span>
+                    <span class="message-time">2:35 PM</span>
+                </div>
+                <div class="message-text">I had a great session with Lucy today, she's showing good progress in managing stress levels.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="input-container">
+        <input type="text" class="message-input" placeholder="Enter Message...">
+        <button class="send-button">➤</button>
+    </div>
+
+    <nav class="nav-bar">
+        <a href="home.html" class="nav-item">
+            <span class="nav-icon">🏠</span>
+            <a href="home.html">Home</a>
+        </a>
+        <a href="community1.html" class="nav-item active">
+            <span class="nav-icon">👥</span>
+            Community
+        </a>
+        <a href="awareness.html" class="nav-item">
+            <span class="nav-icon">💡</span>
+            Awareness
+        </a>
+        <a href="support.html" class="nav-item">
+            <span class="nav-icon">💪</span>
+            Support
+        </a>
+        <a href="#" class="nav-item">
+            <span class="nav-icon">📅</span>
+            Appointment
+        </a>
+    </nav>
+
+    <script>
+        // Handle channel selection
+        document.querySelectorAll('.channel-pill').forEach(channel => {
+            channel.addEventListener('click', function() {
+                document.querySelectorAll('.channel-pill').forEach(c => c.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Handle navigation
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.nav-item').forEach(navItem => {
+                    navItem.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+
+        // Handle message sending
+        const messageInput = document.querySelector('.message-input');
+        const sendButton = document.querySelector('.send-button');
+
+        function sendMessage() {
+            const message = messageInput.value.trim();
+            if (message) {
+                const chatContainer = document.querySelector('.chat-container');
+                const newMessage = `
+                    <div class="message">
+                        <div class="message-avatar"></div>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <span class="message-name">You</span>
+                                <span class="message-time">Just now</span>
+                            </div>
+                            <div class="message-text">${message}</div>
+                        </div>
+                    </div>
+                `;
+                chatContainer.insertAdjacentHTML('beforeend', newMessage);
+                messageInput.value = '';
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            }
+        }
+
+        sendButton.addEventListener('click', sendMessage);
+        messageInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>

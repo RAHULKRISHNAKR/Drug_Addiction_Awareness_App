@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #1a1a1a;
+            color: white;
+            min-height: 100vh;
+        }
+
+        .header {
+            padding: 1.5rem;
+            font-size: 1.5rem;
+            color: #ffffff;
+            background-color: #1a1a1a;
+        }
+
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            background-color: #2a2a2a;
+            border-radius: 15px;
+            margin: 0 1rem;
+        }
+
+        .profile-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #404040;
+            margin-bottom: 1rem;
+        }
+
+        .profile-name {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-email {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .settings-list {
+            margin: 1.5rem 1rem;
+            background-color: #2a2a2a;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .settings-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #404040;
+            cursor: pointer;
+        }
+
+        .settings-item:last-child {
+            border-bottom: none;
+        }
+
+        .settings-item:hover {
+            background-color: #333;
+        }
+
+        .nav-bar {
+            background-color: #2a2a2a;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #888;
+            text-decoration: none;
+            font-size: 0.8rem;
+            gap: 0.3rem;
+        }
+
+        .nav-item.active {
+            color: #ffffff;
+        }
+
+        .nav-icon {
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        Settings
+    </header>
+
+    <section class="profile-section">
+        <div class="profile-image"></div>
+        <div class="profile-name">Lucy Meadows</div>
+        <div class="profile-email">lucymeadows@email.com</div>
+    </section>
+
+    <div class="settings-list">
+        <div class="settings-item">Customer Support</div>
+        <div class="settings-item">Report a problem</div>
+        <div class="settings-item">Devices</div>
+        <div class="settings-item">Notifications</div>
+        <div class="settings-item">Appearance</div>
+        <div class="settings-item">Language</div>
+        <div class="settings-item">Privacy & Security</div>
+        <div class="settings-item">Storage</div>
+    </div>
+
+    <nav class="nav-bar">
+        <a href="#" class="nav-item">
+            <span class="nav-icon">🏠</span>
+            Home
+        </a>
+        <a href="#" class="nav-item">
+            <span class="nav-icon">👥</span>
+            Community
+        </a>
+        <a href="#" class="nav-item">
+            <span class="nav-icon">💡</span>
+            Awareness
+        </a>
+        <a href="#" class="nav-item">
+            <span class="nav-icon">💪</span>
+            Support
+        </a>
+        <a href="#" class="nav-item active">
+            <span class="nav-icon">⚙️</span>
+            Settings
+        </a>
+    </nav>
+
+    <script>
+        // Handle settings item clicks
+        document.querySelectorAll('.settings-item').forEach(item => {
+            item.addEventListener('click', function() {
+                alert(`Opening ${this.textContent}`);
+            });
+        });
+
+        // Handle navigation item clicks
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.nav-item').forEach(navItem => {
+                    navItem.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
