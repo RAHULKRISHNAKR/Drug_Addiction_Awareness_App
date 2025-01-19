@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Community Chat</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
         }
 
         body {
-            background-color: #1a1a1a;
-            color: white;
+            background-color: #B1B1BF;
+            color: #ffffff;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -100,6 +101,10 @@
             display: flex;
             gap: 0.5rem;
             margin-bottom: 1rem;
+            background: #282828;
+            color: white;
+            padding: 15px;
+            border-radius: 15px;
         }
 
         .message-avatar {
@@ -138,41 +143,44 @@
         }
 
         .input-container {
-            padding: 1rem;
-            background-color: #2a2a2a;
+            position: fixed;
+            bottom: 70px;
+            left: 0;
+            right: 0;
+            padding: 15px;
+            background: white;
             display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 60px;
+            gap: 10px;
         }
 
         .message-input {
             flex: 1;
-            padding: 0.8rem;
+            padding: 10px;
+            border: 1px solid #ddd;
             border-radius: 20px;
-            border: none;
-            background-color: #404040;
-            color: white;
+            font-size: 14px;
         }
 
         .send-button {
-            background: none;
-            border: none;
+            background: #ff7f50;
             color: white;
-            font-size: 1.5rem;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
             cursor: pointer;
         }
 
         .nav-bar {
-            background-color: #2a2a2a;
-            padding: 1rem;
             position: fixed;
             bottom: 0;
-            width: 100%;
+            left: 0;
+            right: 0;
+            background: white;
             display: flex;
             justify-content: space-around;
-            border-top-left-radius: 15px;
-            border-top-right-radius: 15px;
+            padding: 15px;
+            border-top: 1px solid #333;
         }
 
         .nav-item {
@@ -181,12 +189,17 @@
             align-items: center;
             color: #888;
             text-decoration: none;
-            font-size: 0.8rem;
-            gap: 0.3rem;
+            font-size: 12px;
+            gap: 5px;
         }
 
         .nav-item.active {
-            color: #ffffff;
+            color: #371B34;
+        }
+
+        .nav-item i {
+            font-size: 20px;
+            margin-bottom: 2px;
         }
     </style>
 </head>
@@ -238,30 +251,31 @@
         <button class="send-button">➤</button>
     </div>
 
-    <nav class="nav-bar">
+    <nav class="nav-bar" class="bottom-nav">
         <a href="home.html" class="nav-item">
-            <span class="nav-icon">🏠</span>
-            <a href="home.html">Home</a>
+            <i class="fas fa-home"></i>
+            <span><a href="home.html">Home</a></span>
         </a>
         <a href="community1.html" class="nav-item active">
             <span class="nav-icon">👥</span>
-            Community
+            <span><a href="community1.html">Community</a></span>
         </a>
         <a href="awareness.html" class="nav-item">
             <span class="nav-icon">💡</span>
-            Awareness
+            <span><a href="awareness.html">Awareness</a></span>
         </a>
         <a href="support.html" class="nav-item">
             <span class="nav-icon">💪</span>
-            Support
+            <span><a href="support.html">Support</a></span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="sessions-interface.html" class="nav-item">
             <span class="nav-icon">📅</span>
-            Appointment
+            <span><a href="sessions-interface.html">Appointment</a></span>
         </a>
     </nav>
 
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
         // Handle channel selection
         document.querySelectorAll('.channel-pill').forEach(channel => {
             channel.addEventListener('click', function() {
@@ -313,6 +327,7 @@
                 sendMessage();
             }
         });
+    });
     </script>
 </body>
 </html>
